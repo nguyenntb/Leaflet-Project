@@ -1,0 +1,27 @@
+---
+title: "Places to eat during 2-day visit in Miami Beach"
+date: "8/8/2019"
+output: html_document
+---
+
+```{r, echo = FALSE, warning = FALSE}
+library(leaflet)
+diningLocation <- data.frame(
+        lat = c(25.785855, 25.775941, 25.768471, 25.789439),
+        lng = c(-80.131465, -80.134917, -80.132727, -80.140243)
+)
+
+diningSites <- c(
+        "<a href = 'http://www.lasandwicherie.com/'>Lunch Day 1: La Sandwicherie</a>",
+        "<a href = 'http://www.lasolascafesb.com'>Dinner Day 1: La Olas Cafe</>a",
+        "<a href = 'https://www.lobstershackmiami.com/'>Lunch Day 2: Lobster Shack</>a",
+        "<a href = 'https://www.runchickenrun.com/'>Dinner Day 2: Yardbird</>a"
+)
+
+my_map <- diningLocation %>%
+        leaflet() %>%
+        addTiles() %>%
+        addMarkers(popup = diningSites)
+
+my_map
+```
